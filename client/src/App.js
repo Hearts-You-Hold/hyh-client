@@ -20,7 +20,7 @@ export default function App() {
 
     async function getData() {
       try {
-        let response = await fetch(`http://localhost:8003/`);
+        let response = await fetch(`https://hyh-server.herokuapp.com/`);
 
         response = await response.json();
 
