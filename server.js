@@ -5,7 +5,7 @@ const router = express.Router();
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const port = process.env.PORT || 8003;
-const host = process.env.PORT || 8003;
+// const host = process.env.PORT || 8003;
 require("dotenv").config();
 
 const app = express();
@@ -192,6 +192,10 @@ app.post("/donation-cart", async (request, response) => {
   }
 });
 
-app.listen(port, host, () => {
-  console.log("listening on port: " + port + " and host: " + host );
+// app.listen(port, host, () => {
+//   console.log("listening on port: " + port + " and host: " + host );
+// });
+
+app.listen(port, () => {
+  console.log(`You're listening on ${port}`);
 });
