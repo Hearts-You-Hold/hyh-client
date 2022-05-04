@@ -51,7 +51,7 @@ export default function Funded({
           <h1 className="categorySearchHeader">Sort By:</h1>
         </div>
         <div className="categorySearch">
-          <label htmlFor="categorySelect">Items Category:</label>
+          <label htmlFor="categorySelect">Item Category:</label>
           <select id="categorySelect" onChange={findCategoryValue}>
             <option value="" defaultValue hidden>
               Category
