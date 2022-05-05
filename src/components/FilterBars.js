@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./styles/searchBars.css";
+import "./styles/filterBars.css";
 
 export default function Funded({
   itemCategoriesList,

@@ -134,10 +134,7 @@ export default function ShoppingCart({
           )}
         </section>
       </div>
-      <Form 
-      setFormData={setFormData}
-      payPal={payPal}
-      />
+      <Form setFormData={setFormData} payPal={payPal} />
     </>
   );
 }

@@ -34,9 +34,9 @@ export default function App() {
 
         let fundedVariable = response[1];
 
-        notFundedVariable = notFundedVariable.reverse()
+        notFundedVariable = notFundedVariable.reverse();
 
-        fundedVariable = fundedVariable.reverse()
+        fundedVariable = fundedVariable.reverse();
 
         fundedVariable = fundedVariable.map((fundedObject, index) => {
           let donationItemPrice = fundedObject.itemPrice;

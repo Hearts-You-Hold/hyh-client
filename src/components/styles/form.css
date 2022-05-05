@@ -32,7 +32,7 @@
   border-radius: 0.3rem;
   width: 80%;
   max-width: 30rem;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
 }
 
 .formQuestionsContainer {
@@ -68,14 +68,14 @@
 }
 
 .proceedToCheckout {
-    text-decoration: none;
-  
-    background: #cc6072;
-    color: #ffffff;
-    font-size: 1rem;
-    padding: 1rem 1.2rem;
-    border-radius: 0.3rem;
-    border: none;
-    cursor: pointer;
-    margin: 1.6rem 0 2.4rem 0; 
-  }
+  text-decoration: none;
+
+  background: #cc6072;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  margin: 1.6rem 0 2.4rem 0;
+}

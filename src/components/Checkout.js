@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import "./styles/paypal.css";
+import "./styles/checkout.css";
 
 export default function PayPal({
   notFunded,
@@ -12,30 +12,10 @@ export default function PayPal({
   setItemCategory,
 }) {
   const amount = totalDonation;
-  let purchasedItemsDisplay = []
+  let purchasedItemsDisplay = [];
 
   const [successMessage, setSuccessMessage] = useState(false);
   const [payPalDisplayError, setPayPalDisplayError] = useState(false);
-
- 
-
-  // console.log(purchasedItems);
-
-
-  // purchasedItemsDisplay = purchasedItems.map((purchasedItem, index) => {
-  //   return <li key={`donationItemCard-${index}`}>
-  //         <div className="donationCard">
-  //           {/* contents for left side of item card*/}
-  //           <section className="cardNameDescription">
-  //             <h2 className="cardName">{purchasedItem.itemName}</h2>
-  //             </section>
-  //             </div>
-  //             </li>
-
-  // })
-
-  // console.log(purchasedItemsDisplay);
-
 
   async function postData() {
     setPayPalDisplayError(false);
@@ -44,7 +24,7 @@ export default function PayPal({
     let purchasedItems = notFunded.filter((item) => {
       return item.inShoppingCart === true;
     });
-  
+
     purchasedItems = purchasedItems.map((purchasedItem) => {
       return {
         ...purchasedItem,
@@ -53,13 +33,14 @@ export default function PayPal({
       };
     });
 
-
-
-    let response = await fetch(`http://localhost:8003/donation-cart`, {
-      method: "POST",
-      body: JSON.stringify([purchasedItems, formData, amount]),
-      headers: { "Content-Type": "application/json" },
-    });
+    let response = await fetch(
+      `https://hyh-server.herokuapp.com/donation-cart`,
+      {
+        method: "POST",
+        body: JSON.stringify([purchasedItems, formData, amount]),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     response = await response.json();
 
     setShowShoppingCartButton(false);
@@ -94,8 +75,8 @@ export default function PayPal({
       setTimeout(() => {
         setSuccessfulPayment(true);
         setPayPalOpen(false);
-        setItemCategory("all")
-      return <>{window.scrollTo(0, 0)}</>;
+        setItemCategory("all");
+        return <>{window.scrollTo(0, 0)}</>;
       }, 4000);
     });
   };
@@ -120,22 +101,22 @@ export default function PayPal({
             }}
           >
             <div className="payPalButton">
-            <PayPalButtons
-              style={{ layout: "vertical" }}
-              fundingSource="paypal"
-              createOrder={createOrder}
-              onApprove={onApprove}
-              onError={onError}
-            />
+              <PayPalButtons
+                style={{ layout: "vertical" }}
+                fundingSource="paypal"
+                createOrder={createOrder}
+                onApprove={onApprove}
+                onError={onError}
+              />
             </div>
             <div className="payPalButton">
-            <PayPalButtons
-              style={{ layout: "vertical" }}
-              fundingSource="card"
-              createOrder={createOrder}
-              onApprove={onApprove}
-              onError={onError}
-            />
+              <PayPalButtons
+                style={{ layout: "vertical" }}
+                fundingSource="card"
+                createOrder={createOrder}
+                onApprove={onApprove}
+                onError={onError}
+              />
             </div>
           </PayPalScriptProvider>
         </div>

@@ -46,7 +46,7 @@
   background: #cc6072;
   color: #ffffff;
   border-radius: 0.3rem;
-  margin: auto auto .8rem auto;
+  margin: auto auto 0.8rem auto;
   text-align: center;
 }
 
@@ -57,5 +57,5 @@
 }
 
 .payPalButton {
-  margin: .8rem 0 .8rem 0;
+  margin: 0.8rem 0 0.8rem 0;
 }

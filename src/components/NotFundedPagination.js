@@ -54,17 +54,17 @@ export default function NotFundedPagination({
   let viewedDescription = null;
 
   function descriptionSlice(itemDescription) {
-    //if the description is less than 20 characters, show the whole description
+    //if the description is less than 300 characters, show the whole description
     if (itemDescription.length < 300) {
       viewedDescription = itemDescription;
       return viewedDescription;
 
-      //if it is over 20
+      //if it is over 300
     } else {
       for (let i = 300; i <= itemDescription.length; i++) {
         let character = itemDescription.charAt(i);
 
-        //for a description that is over 20 characters but doesn't have a space between 20 and its total length
+        //for a description that is over 300 characters but doesn't have a space between 300 and its total length
         if (i === itemDescription.length) {
           viewedDescription = itemDescription;
           return viewedDescription;
@@ -100,8 +100,6 @@ export default function NotFundedPagination({
       })
       .slice(pagesVisited, pagesVisited + donationItemsPerPage)
       .map((donationItemCard, index) => {
-        //this variable is a placeholder idea for limiting the description size
-
         descriptionSlice(donationItemCard.donationDescription);
 
         //variable for if readMoreOpen = true
@@ -121,7 +119,7 @@ export default function NotFundedPagination({
 
         //variable for if readMoreOpen = false
         let readMoreDescription = (
-          //if the description is over 20 characters show the read more button
+          //if the description is over 300 characters show the read more button
           <>
             {viewedDescription.length > 300 ? (
               <>
@@ -136,7 +134,7 @@ export default function NotFundedPagination({
                 </button>
               </>
             ) : (
-              //if the description is under 20 characters just show the description without a read more button
+              //if the description is under 30 characters just show the description without a read more button
               <>{viewedDescription}</>
             )}
           </>
@@ -258,7 +256,7 @@ export default function NotFundedPagination({
         return item;
       }
     });
-
+    //checking list length for pagination pages and no items display
     if (lengthOfFilter.length === 0) {
       setNotMatchFound(true);
     } else {

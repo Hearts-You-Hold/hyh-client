@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { HashLink as Link } from "react-router-hash-link";
 import ShoppingCart from "./ShoppingCart.js";
 import NotFundedPagination from "./NotFundedPagination.js";
-import PayPal from "./PayPal.js";
-import SearchBars from "./SearchBars.js";
+import Checkout from "./Checkout";
+import SearchBars from "./FilterBars.js";
 import ScrollToTop from "./ScrollToTop.js";
 import "./styles/home.css";
 import Hearts from "./assets/hearts.png";
@@ -26,7 +26,7 @@ export default function Home({
   // const [itemCategory, setItemCategory] = useState("all");
   const [itemRecipientsState, setItemRecipientsState] = useState("all");
   const [pageNumber, setPageNumber] = useState(0);
-  const [formData, setFormData] = useState([]); 
+  const [formData, setFormData] = useState([]);
 
   let totalFunded = isFunded.length;
 
@@ -51,7 +51,7 @@ export default function Home({
 
   return (
     <>
-    {/* <ContactForm /> */}
+      {/* <ContactForm /> */}
       <ScrollToTop />
       <div className="body">
         <div className="heroContainer">
@@ -124,13 +124,13 @@ export default function Home({
             setTotalDonation={setTotalDonation}
             setPayPalOpen={setPayPalOpen}
             setFormData={setFormData}
-          /> 
+          />
         )}
-  
+
         {payPalOpen && (
           <>
             <div id="paypal">
-              <PayPal
+              <Checkout
                 totalDonation={totalDonation}
                 notFunded={notFunded}
                 setSuccessfulPayment={setSuccessfulPayment}
