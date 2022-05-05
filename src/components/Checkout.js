@@ -10,6 +10,7 @@ export default function PayPal({
   formData,
   setPayPalOpen,
   setItemCategory,
+  setItemRecipientsState
 }) {
   const amount = totalDonation;
   let purchasedItemsDisplay = [];
@@ -76,6 +77,7 @@ export default function PayPal({
         setSuccessfulPayment(true);
         setPayPalOpen(false);
         setItemCategory("all");
+        setItemRecipientsState("all");
         return <>{window.scrollTo(0, 0)}</>;
       }, 4000);
     });

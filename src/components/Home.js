@@ -16,14 +16,12 @@ export default function Home({
   recipientStatesList,
   setSuccessfulPayment,
   displayError,
-  itemCategory,
-  setItemCategory,
-}) {
+  }) {
   const [shoppingCartIsOpen, setShoppingCartIsOpen] = useState(false);
   const [showShoppingCartButton, setShowShoppingCartButton] = useState(false);
   const [totalDonation, setTotalDonation] = useState(0);
   const [payPalOpen, setPayPalOpen] = useState(false);
-  // const [itemCategory, setItemCategory] = useState("all");
+  const [itemCategory, setItemCategory] = useState("all");
   const [itemRecipientsState, setItemRecipientsState] = useState("all");
   const [pageNumber, setPageNumber] = useState(0);
   const [formData, setFormData] = useState([]);
@@ -139,6 +137,7 @@ export default function Home({
                 setPayPalOpen={setPayPalOpen}
                 itemCategory={itemCategory}
                 setItemCategory={setItemCategory}
+                setItemRecipientsState={setItemRecipientsState}
               />
             </div>
           </>
