@@ -101,6 +101,7 @@ export default function App() {
                 setNotFunded={setNotFunded}
                 isFunded={isFunded}
                 itemCategoriesList={itemCategoriesList}
+                setItemCategoriesList={setItemCategoriesList}
                 recipientStatesList={recipientStatesList}
                 setSuccessfulPayment={setSuccessfulPayment}
               />

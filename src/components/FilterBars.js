@@ -7,7 +7,14 @@ export default function Funded({
   setPageNumber,
   recipientStatesList,
   setItemRecipientsState,
+  setItemCategoriesList,
+  itemCategory,
+  itemRecipientsState, 
+  notFunded
 }) {
+
+  const [isCleared, setIsCleared] = useState(false)
+
   let recipientStatesOptionList = [];
 
   recipientStatesOptionList = recipientStatesList.map((state, index) => {
@@ -20,8 +27,6 @@ export default function Funded({
 
   let findStateValue = (event) => {
     let optionState = event.target.value;
-
-    console.log(optionState);
 
     setItemRecipientsState(optionState);
     setPageNumber(0);
@@ -44,16 +49,106 @@ export default function Funded({
     );
   });
 
+  let clearFilters = () => {
+
+    setItemCategory("all");
+    setItemRecipientsState("all")
+
+    if(isCleared) {
+      setIsCleared(false)
+    } else if (!isCleared) {
+      setIsCleared(true)
+    }
+  };
+
+  const [filterBarsTest, setFilterBarsTest] = useState(null)
+
+//   let filterBarsTest = 
+//   (<div className="searchSectionContainer">
+//   <div>
+//     <h1 className="categorySearchHeader">Sort By:</h1>
+//   </div>
+//   <div className="categorySearch">
+//     <label htmlFor="categorySelect">Item Category:</label>
+//     <select className="categorySelect" onChange={findCategoryValue}>
+//       <option value="all" defaultValue hidden>
+//         Category
+//       </option>
+//       <option value="all"> All Categories </option>
+//       {itemCategoriesOptionList}
+//     </select>
+//   </div>
+
+//   <div className="categorySearch">
+//     <label htmlFor="categorySelect">Recipient's State :</label>
+//     <select className="categorySelect" onChange={findStateValue}>
+//       <option value="all" defaultValue hidden>
+//         State
+//       </option>
+//       <option value="all"> All States </option>
+//       {recipientStatesOptionList}
+//     </select>
+//   </div>
+//   <button onClick={clearFilters}>Clear</button>
+// </div>) 
+
+
+
+useEffect(() => {
+
+  function buildBars(){
+
+    console.log("fired");
+
+  let filterBars = 
+  (<div className="searchSectionContainer">
+  <div>
+    <h1 className="categorySearchHeader">Sort By:</h1>
+  </div>
+  <div className="categorySearch">
+    <label htmlFor="categorySelect">Item Category:</label>
+    <select className="categorySelect" onChange={findCategoryValue}>
+      <option value="all" defaultValue hidden>
+        Category
+      </option>
+      <option value="all"> All Categories </option>
+      {itemCategoriesOptionList}
+    </select>
+  </div>
+
+  <div className="categorySearch">
+    <label htmlFor="categorySelect">Recipient's State :</label>
+    <select className="categorySelect" onChange={findStateValue}>
+      <option value="all" defaultValue hidden>
+        State
+      </option>
+      <option value="all"> All States </option>
+      {recipientStatesOptionList}
+    </select>
+  </div>
+  <button onClick={clearFilters}>Clear</button>
+</div>) 
+
+return setFilterBarsTest(filterBars)
+  }
+
+  buildBars()
+
+
+} ,[isCleared, itemCategory, itemRecipientsState, notFunded])  
+
   return (
-    <>
-      <div className="searchSectionContainer">
+    <> 
+      {isCleared ? filterBarsTest : filterBarsTest}
+
+       {/* (<div className="searchSectionContainer">
         <div>
           <h1 className="categorySearchHeader">Sort By:</h1>
         </div>
         <div className="categorySearch">
           <label htmlFor="categorySelect">Item Category:</label>
-          <select id="categorySelect" onChange={findCategoryValue}>
-            <option value="" defaultValue hidden>
+          <select className="categorySelect" onChange={findCategoryValue}>
+            <option value="all" defaultValue hidden>
               Category
             </option>
             <option value="all"> All Categories </option>
@@ -63,15 +158,16 @@ export default function Funded({
 
         <div className="categorySearch">
           <label htmlFor="categorySelect">Recipient's State :</label>
-          <select id="categorySelect" onChange={findStateValue}>
-            <option value="" defaultValue hidden>
+          <select className="categorySelect" onChange={findStateValue}>
+            <option value="all" defaultValue hidden>
               State
             </option>
             <option value="all"> All States </option>
             {recipientStatesOptionList}
           </select>
         </div>
-      </div>
+        <button onClick={clearFilters}>Clear</button>
+      </div>)  */}
     </>
   );
 }

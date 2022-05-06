@@ -3,7 +3,7 @@ import { HashLink as Link } from "react-router-hash-link";
 import ShoppingCart from "./ShoppingCart.js";
 import NotFundedPagination from "./NotFundedPagination.js";
 import Checkout from "./Checkout";
-import SearchBars from "./FilterBars.js";
+import FilterBars from "./FilterBars.js";
 import ScrollToTop from "./ScrollToTop.js";
 import "./styles/home.css";
 import Hearts from "./assets/hearts.png";
@@ -16,6 +16,7 @@ export default function Home({
   recipientStatesList,
   setSuccessfulPayment,
   displayError,
+  setItemCategoriesList
   }) {
   const [shoppingCartIsOpen, setShoppingCartIsOpen] = useState(false);
   const [showShoppingCartButton, setShowShoppingCartButton] = useState(false);
@@ -86,12 +87,16 @@ export default function Home({
             </div>
           )}
 
-          <SearchBars
+          <FilterBars
             itemCategoriesList={itemCategoriesList}
             setItemCategory={setItemCategory}
             setPageNumber={setPageNumber}
             recipientStatesList={recipientStatesList}
             setItemRecipientsState={setItemRecipientsState}
+            setItemCategoriesList={setItemCategoriesList}
+            itemCategory={itemCategory}
+            itemRecipientsState={itemRecipientsState}
+            notFunded={notFunded}
           />
           {displayError && (
             <>
