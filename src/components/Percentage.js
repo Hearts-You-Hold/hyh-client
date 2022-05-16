@@ -12,14 +12,15 @@ export default function Percentages({ notFunded, setTotalDonation }) {
     return item.itemPrice;
   });
 
-  let donationTotalValue = totalDonationArray.reduce(
-    (previousValue, currentValue) => {
-      return previousValue + currentValue;
-    }
-  );
 
   let percentageCalculator = (event) => {
     let percentage = event.target.value;
+
+    let donationTotalValue = totalDonationArray.reduce(
+      (previousValue, currentValue) => {
+        return previousValue + currentValue;
+      }
+    );
 
     switch (percentage) {
       case "zero":
@@ -27,7 +28,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "five":
-        donationTotalValue = donationTotalValue * 0.05 + donationTotalValue;
+        donationTotalValue = (donationTotalValue * 0.05) + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 
@@ -36,7 +37,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "ten":
-        donationTotalValue = donationTotalValue * 0.1 + donationTotalValue;
+        donationTotalValue = (donationTotalValue * 0.1) + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 
@@ -45,7 +46,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "fifteen":
-        donationTotalValue = donationTotalValue * 0.15 + donationTotalValue;
+        donationTotalValue = (donationTotalValue * 0.15) + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 
@@ -54,7 +55,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "twenty":
-        donationTotalValue = donationTotalValue * 0.2 + donationTotalValue;
+        donationTotalValue = (donationTotalValue * 0.2) + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 
@@ -63,7 +64,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "twenty-five":
-        donationTotalValue = donationTotalValue * 0.25 + donationTotalValue;
+        donationTotalValue = (donationTotalValue * 0.25) + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 

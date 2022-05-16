@@ -94,9 +94,6 @@ export default function Home({
             recipientStatesList={recipientStatesList}
             setItemRecipientsState={setItemRecipientsState}
             setItemCategoriesList={setItemCategoriesList}
-            itemCategory={itemCategory}
-            itemRecipientsState={itemRecipientsState}
-            notFunded={notFunded}
           />
           {displayError && (
             <>

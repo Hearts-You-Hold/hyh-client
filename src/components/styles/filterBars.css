@@ -32,6 +32,22 @@
   width: 80%;
 }
 
+.clearButton {
+  text-decoration: none;
+
+  background: #4f779d;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: .8rem .8rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+}
+
+.clearButton:hover {
+  background: #cc6072;
+}
+
 @media screen and (min-width: 640px) {
   .searchSectionContainer {
     flex-direction: row;
