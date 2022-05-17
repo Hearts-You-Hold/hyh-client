@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import "./styles/filterBars.css";
 
 export default function Funded({
@@ -8,7 +8,6 @@ export default function Funded({
   recipientStatesList,
   setItemRecipientsState,
 }) {
-  const [isCleared, setIsCleared] = useState(false);
   const firstContainer = useRef(null);
   const secondContainer = useRef(null);
 
@@ -51,52 +50,48 @@ export default function Funded({
     setItemRecipientsState("all");
     setPageNumber(0);
 
-    firstContainer.current.selectedIndex = 0
-    secondContainer.current.selectedIndex = 0
-
-    if (isCleared) {
-      setIsCleared(false);
-    } else if (!isCleared) {
-      setIsCleared(true);
-    }
+    firstContainer.current.selectedIndex = 0;
+    secondContainer.current.selectedIndex = 0;
   };
 
-      return (
-        <div className="searchSectionContainer">
-          <div>
-            <h1 className="categorySearchHeader">Sort By:</h1>
-          </div>
-          <div className="categorySearch">
-            <label htmlFor="categorySelect">Item Category:</label>
-            <select
-              className="categorySelect"
-              ref={firstContainer}
-              onChange={findCategoryValue}
-            >
-              <option value="all" defaultValue hidden>
-                Category
-              </option>
-              <option value="all"> All Categories </option>
-              {itemCategoriesOptionList}
-            </select>
-          </div>
+  return (
+    <div className="searchSectionContainer">
+      <div>
+        <h1 className="categorySearchHeader">Sort By:</h1>
+      </div>
+      <div className="categorySearch">
+        <label htmlFor="categorySelect">Item Category:</label>
+        <select
+          className="categorySelect"
+          ref={firstContainer}
+          onChange={findCategoryValue}
+        >
+          <option value="all" defaultValue hidden>
+            Category
+          </option>
+          <option value="all"> All Categories </option>
+          {itemCategoriesOptionList}
+        </select>
+      </div>
 
-          <div className="categorySearch">
-            <label htmlFor="categorySelect">Recipient's State :</label>
-            <select
-              className="categorySelect"
-              ref={secondContainer}
-              onChange={findStateValue}
-            >
-              <option value="all" defaultValue hidden>
-                State
-              </option>
-              <option value="all"> All States </option>
-              {recipientStatesOptionList}
-            </select>
-          </div>
+      <div className="categorySearch">
+        <label htmlFor="categorySelect">Recipient's State :</label>
+        <select
+          className="categorySelect"
+          ref={secondContainer}
+          onChange={findStateValue}
+        >
+          <option value="all" defaultValue hidden>
+            State
+          </option>
+          <option value="all"> All States </option>
+          {recipientStatesOptionList}
+        </select>
+      </div>
 
-          <button className="clearButton" onClick={clearFilters}>Clear</button>
-        </div>
-      )
+      <button className="clearButton" onClick={clearFilters}>
+        Clear
+      </button>
+    </div>
+  );
 }

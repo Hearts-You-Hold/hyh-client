@@ -10,7 +10,7 @@ export default function PayPal({
   formData,
   setPayPalOpen,
   setItemCategory,
-  setItemRecipientsState
+  setItemRecipientsState,
 }) {
   const amount = totalDonation;
   let purchasedItemsDisplay = [];
@@ -20,7 +20,6 @@ export default function PayPal({
 
   async function postData() {
     setPayPalDisplayError(false);
-    console.log("it worked");
 
     let purchasedItems = notFunded.filter((item) => {
       return item.inShoppingCart === true;
