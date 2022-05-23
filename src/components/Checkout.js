@@ -18,13 +18,16 @@ export default function PayPal({
   const [successMessage, setSuccessMessage] = useState(false);
   const [payPalDisplayError, setPayPalDisplayError] = useState(false);
 
+  //function to post form data, donation total and purchased items
   async function postData() {
     setPayPalDisplayError(false);
 
+    //finding in cart items
     let purchasedItems = notFunded.filter((item) => {
       return item.inShoppingCart === true;
     });
 
+    //changing funded boolean of purchased items
     purchasedItems = purchasedItems.map((purchasedItem) => {
       return {
         ...purchasedItem,
@@ -86,6 +89,7 @@ export default function PayPal({
     setPayPalDisplayError(true);
   };
 
+  //renders donation total with paypal buttons
   let checkout = (
     <>
       <div className="checkoutContainer">
@@ -125,6 +129,7 @@ export default function PayPal({
     </>
   );
 
+  //displays after successful purchase
   let complete = (
     <>
       <div className="donationCard noListing textCenter">
@@ -136,6 +141,7 @@ export default function PayPal({
   return (
     <>
       <div className="checkout">
+        {/* error handling for paypal */}
         {payPalDisplayError && (
           <>
             <p className="donationCard noListing textCenter">
@@ -148,6 +154,7 @@ export default function PayPal({
           </>
         )}
 
+        {/* rendering checkout or completed purchased */}
         {successMessage ? complete : checkout}
       </div>
     </>

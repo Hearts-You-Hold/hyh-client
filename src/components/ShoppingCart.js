@@ -48,6 +48,7 @@ export default function ShoppingCart({
     addDonations();
   }, [notFunded]);
 
+  //onClick function to change inShoppingCart boolean
   function removeFromCart(event, id) {
     let removedItem = notFunded.map((item) => {
       if (item._id === id) {
@@ -60,6 +61,7 @@ export default function ShoppingCart({
     setIsChecked(false);
   }
 
+  //shopping cart item list: name, price and remove button
   let shoppingCart = shoppingCartItem.map((item, index) => {
     return (
       <li className="shoppingCartItem" key={`shoppingCartItem-${index}`}>
@@ -84,6 +86,7 @@ export default function ShoppingCart({
     setIsChecked(false);
   }, [notFunded]);
 
+  //function for rendering percentage component percentage component
   let checkedBox = () => {
     if (isChecked) {
       setIsChecked(false);
@@ -92,6 +95,7 @@ export default function ShoppingCart({
     }
   };
 
+  //function for rendering checkout component and closing shopping cart
   let payPal = () => {
     setPayPalOpen(true);
     setShoppingCartIsOpen(false);
@@ -102,6 +106,7 @@ export default function ShoppingCart({
       <div id="donation-cart">
         <div className="shoppingCartLeft">
           <h1 className="shoppingCartHeader">Your Donation</h1>
+          {/* items in the shopping cart */}
           <ul>{shoppingCart}</ul>
         </div>
         <div className="donationTotal">
@@ -125,6 +130,8 @@ export default function ShoppingCart({
             This donation includes an optional 15% donation to support Hearts
             You Hold.
           </p>
+
+          {/* percentage component */}
           {isChecked && (
             <Percentage
               totalDonation={totalDonation}
@@ -134,6 +141,7 @@ export default function ShoppingCart({
           )}
         </section>
       </div>
+      {/* form component */}
       <Form setFormData={setFormData} payPal={payPal} />
     </>
   );

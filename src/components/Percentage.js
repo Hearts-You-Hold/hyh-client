@@ -12,7 +12,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
     return item.itemPrice;
   });
 
-
+  //onClick function totals donation and selected percentage, rounds up to nearest dollar and sets the total donation to reflect result
   let percentageCalculator = (event) => {
     let percentage = event.target.value;
 
@@ -28,7 +28,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "five":
-        donationTotalValue = (donationTotalValue * 0.05) + donationTotalValue;
+        donationTotalValue = donationTotalValue * 0.05 + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 
@@ -37,7 +37,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "ten":
-        donationTotalValue = (donationTotalValue * 0.1) + donationTotalValue;
+        donationTotalValue = donationTotalValue * 0.1 + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 
@@ -46,7 +46,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "fifteen":
-        donationTotalValue = (donationTotalValue * 0.15) + donationTotalValue;
+        donationTotalValue = donationTotalValue * 0.15 + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 
@@ -55,7 +55,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "twenty":
-        donationTotalValue = (donationTotalValue * 0.2) + donationTotalValue;
+        donationTotalValue = donationTotalValue * 0.2 + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 
@@ -64,7 +64,7 @@ export default function Percentages({ notFunded, setTotalDonation }) {
         break;
 
       case "twenty-five":
-        donationTotalValue = (donationTotalValue * 0.25) + donationTotalValue;
+        donationTotalValue = donationTotalValue * 0.25 + donationTotalValue;
 
         donationTotalValue = Math.ceil(donationTotalValue);
 

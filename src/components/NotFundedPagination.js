@@ -15,7 +15,7 @@ export default function NotFundedPagination({
   const [notFundedLength, setNotFundedLength] = useState(0);
   const [noMatchFound, setNotMatchFound] = useState(false);
 
-  //function receives object id for each donationItemCard as parameter and maps over the notFunded state and finds the one that matches and changes its inShoppingCart value to true, function then resets notFunded state with new inShoppingCart values
+  //function changes selected item to in the cart
   function addToCart(event, id) {
     let addedItem = notFunded.map((item) => {
       if (item._id === id) {
@@ -28,7 +28,7 @@ export default function NotFundedPagination({
     setNotFunded(addedItem);
   }
 
-  //openReadMore and closeReadMore uses the same logic as addToCart, these functions are toggling the readMoreOpen value between true and false and causing different descriptions to render accordingly
+  //openReadMore and closeReadMore toggle boolean value for description rendering
   function openReadMore(event, id) {
     let clickedItem = notFunded.map((item) => {
       if (item._id === id) {
@@ -74,7 +74,7 @@ export default function NotFundedPagination({
           viewedDescription = itemDescription.slice(0, i);
           return viewedDescription;
 
-          //if it's not a space it adds one to it and runs again
+          //if character not a space it adds one to i and runs again
         } else if (character !== " ") {
           i++;
         }
@@ -283,6 +283,7 @@ export default function NotFundedPagination({
 
   return (
     <>
+      {/* results from filter options */}
       <ul>{noMatchFound ? noMatch : donationItemsToDisplay}</ul>
 
       <ReactPaginate

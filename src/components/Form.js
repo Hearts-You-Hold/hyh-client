@@ -12,9 +12,9 @@ function Form({ setFormData, payPal }) {
   const [listYourName, setListYourName] = useState(false);
   const [blurb, setBlurb] = useState(false);
 
-  // mailchimp code.... runs functions to send email too mailchimp severs
   const [message, setMessage] = useState("");
 
+  //onSubmit function sets form data to state, opens checkout and closes shopping cart, runs mailchimp
   function handleFormSubmit(event) {
     event.preventDefault();
 
@@ -53,7 +53,6 @@ function Form({ setFormData, payPal }) {
     };
 
     if (addToEmail) {
-      console.log("Join MailChimp!");
       subscribeToNewsLetter();
     }
   }

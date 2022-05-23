@@ -16,8 +16,8 @@ export default function Home({
   recipientStatesList,
   setSuccessfulPayment,
   displayError,
-  setItemCategoriesList
-  }) {
+  setItemCategoriesList,
+}) {
   const [shoppingCartIsOpen, setShoppingCartIsOpen] = useState(false);
   const [showShoppingCartButton, setShowShoppingCartButton] = useState(false);
   const [totalDonation, setTotalDonation] = useState(0);
@@ -34,6 +34,7 @@ export default function Home({
     setPayPalOpen(false);
   };
 
+  //function displays shopping cart model if an item has been selected
   useEffect(() => {
     let shoppingCartItem = notFunded.filter((item) => {
       return item.inShoppingCart === true;
@@ -50,7 +51,7 @@ export default function Home({
 
   return (
     <>
-      {/* <ContactForm /> */}
+      {/* hero - page intro information */}
       <ScrollToTop />
       <div className="body">
         <div className="heroContainer">
@@ -74,6 +75,7 @@ export default function Home({
           </section>
         </div>
 
+        {/* go to cart modal */}
         <section>
           {showShoppingCartButton && (
             <div id="shoppingCartButtonContainer">
@@ -87,6 +89,7 @@ export default function Home({
             </div>
           )}
 
+          {/* filters */}
           <FilterBars
             itemCategoriesList={itemCategoriesList}
             setItemCategory={setItemCategory}
@@ -95,6 +98,8 @@ export default function Home({
             setItemRecipientsState={setItemRecipientsState}
             setItemCategoriesList={setItemCategoriesList}
           />
+
+          {/* hno matches for filtering */}
           {displayError && (
             <>
               <p className="donationCard noListing textCenter">
@@ -103,6 +108,8 @@ export default function Home({
               </p>
             </>
           )}
+
+          {/* list of items, pagination */}
           <NotFundedPagination
             notFunded={notFunded}
             setNotFunded={setNotFunded}
@@ -114,6 +121,7 @@ export default function Home({
           />
         </section>
 
+        {/* shoppingCart */}
         {shoppingCartIsOpen && (
           <ShoppingCart
             notFunded={notFunded}
@@ -127,6 +135,7 @@ export default function Home({
           />
         )}
 
+        {/* checkout */}
         {payPalOpen && (
           <>
             <div id="paypal">

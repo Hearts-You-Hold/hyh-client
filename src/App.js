@@ -17,6 +17,7 @@ export default function App() {
   useEffect(() => {
     let isConnectedToServer = true;
 
+    //function sets funded and not funded state, adds 15% price increase to items, reverses list to display most recent items, adds shopping cart and readmore booleans
     async function getData() {
       try {
         let response = await fetch(`https://hyh-server.herokuapp.com/`);
@@ -37,6 +38,7 @@ export default function App() {
 
         fundedVariable = fundedVariable.reverse();
 
+        //adding 15% to item prices
         fundedVariable = fundedVariable.map((fundedObject, index) => {
           let donationItemPrice = fundedObject.itemPrice;
 
@@ -50,9 +52,8 @@ export default function App() {
           };
         });
 
-        //mapping over response object to add inShoppingCart = false - key-value
+        //mapping over response object to add inShoppingCart = false
         notFundedVariable = notFundedVariable.map((notFundedObject, index) => {
-          //adds 15% to item price and rounds up to next dollar
           let donationItemPrice = notFundedObject.itemPrice;
 
           donationItemPrice = donationItemPrice * 0.15 + donationItemPrice;

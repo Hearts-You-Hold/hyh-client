@@ -8,11 +8,13 @@ export default function Funded({
   recipientStatesList,
   setItemRecipientsState,
 }) {
-  const firstContainer = useRef(null);
-  const secondContainer = useRef(null);
+  //using useRef to grab each filter section to reset selectedIndex when clear button clicked
+  const categoryContainer = useRef(null);
+  const statesContainer = useRef(null);
 
   let recipientStatesOptionList = [];
 
+  //building list of states
   recipientStatesOptionList = recipientStatesList.map((state, index) => {
     return (
       <option key={`optionCategory-${index}`} value={state}>
@@ -21,6 +23,7 @@ export default function Funded({
     );
   });
 
+  //finding selected state and setting state for filtering list in NotFundedPagination
   let findStateValue = (event) => {
     let optionState = event.target.value;
 
@@ -30,6 +33,7 @@ export default function Funded({
 
   let itemCategoriesOptionList = [];
 
+  //building list of categories
   itemCategoriesOptionList = itemCategoriesList.map((category, index) => {
     return (
       <option key={`optionCategory-${index}`} value={category}>
@@ -38,6 +42,7 @@ export default function Funded({
     );
   });
 
+  //finding selected category and setting state for filtering list in NotFundedPagination
   let findCategoryValue = (event) => {
     let optionCategory = event.target.value;
 
@@ -45,13 +50,14 @@ export default function Funded({
     setPageNumber(0);
   };
 
+  //function to clear filters by setting states back to all and resetting section index
   let clearFilters = () => {
     setItemCategory("all");
     setItemRecipientsState("all");
     setPageNumber(0);
 
-    firstContainer.current.selectedIndex = 0;
-    secondContainer.current.selectedIndex = 0;
+    categoryContainer.current.selectedIndex = 0;
+    statesContainer.current.selectedIndex = 0;
   };
 
   return (
@@ -63,7 +69,7 @@ export default function Funded({
         <label htmlFor="categorySelect">Item Category:</label>
         <select
           className="categorySelect"
-          ref={firstContainer}
+          ref={categoryContainer}
           onChange={findCategoryValue}
         >
           <option value="all" defaultValue hidden>
@@ -78,7 +84,7 @@ export default function Funded({
         <label htmlFor="categorySelect">Recipient's State :</label>
         <select
           className="categorySelect"
-          ref={secondContainer}
+          ref={statesContainer}
           onChange={findStateValue}
         >
           <option value="all" defaultValue hidden>
