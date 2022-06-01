@@ -5,7 +5,10 @@ import NotFundedPagination from "./NotFundedPagination.js";
 import Checkout from "./Checkout";
 import FilterBars from "./FilterBars.js";
 import ScrollToTop from "./ScrollToTop.js";
+import Loading from "./Loading.js";
+
 import "./styles/home.css";
+
 import Hearts from "./assets/hearts.png";
 
 export default function Home({
@@ -17,6 +20,7 @@ export default function Home({
   setSuccessfulPayment,
   displayError,
   setItemCategoriesList,
+  loaded
 }) {
   const [shoppingCartIsOpen, setShoppingCartIsOpen] = useState(false);
   const [showShoppingCartButton, setShowShoppingCartButton] = useState(false);
@@ -79,7 +83,7 @@ export default function Home({
         <section>
           {showShoppingCartButton && (
             <div id="shoppingCartButtonContainer">
-              <img id="heartsLogo" src={Hearts} />
+              <img id="heartsLogo" src={Hearts} alt="Hearts You Hold Logo" />
 
               <Link id="shoppingCartButton" to="#donation-cart">
                 <button className="goToShoppingCart" onClick={openShoppingCart}>
@@ -110,6 +114,7 @@ export default function Home({
           )}
 
           {/* list of items, pagination */}
+          { loaded ? 
           <NotFundedPagination
             notFunded={notFunded}
             setNotFunded={setNotFunded}
@@ -118,7 +123,7 @@ export default function Home({
             pageNumber={pageNumber}
             setPageNumber={setPageNumber}
             itemRecipientsState={itemRecipientsState}
-          />
+          /> : <Loading/> }
         </section>
 
         {/* shoppingCart */}

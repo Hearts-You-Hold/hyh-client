@@ -13,6 +13,7 @@ export default function App() {
   const [recipientStatesList, setRecipientStatesList] = useState([]);
   const [successfulPayment, setSuccessfulPayment] = useState(false);
   const [displayError, setDisplayError] = useState(false);
+  const [loaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     let isConnectedToServer = true;
@@ -45,6 +46,8 @@ export default function App() {
           donationItemPrice = donationItemPrice * 0.15 + donationItemPrice;
 
           donationItemPrice = Math.ceil(donationItemPrice);
+
+          setIsLoaded(true)
 
           return {
             ...fundedObject,
@@ -105,6 +108,7 @@ export default function App() {
                 setItemCategoriesList={setItemCategoriesList}
                 recipientStatesList={recipientStatesList}
                 setSuccessfulPayment={setSuccessfulPayment}
+                loaded={loaded}
               />
             }
           />
